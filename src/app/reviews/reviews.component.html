@@ -1,0 +1,23 @@
+<h1>Reviews</h1>
+<mat-grid-list cols="4" rowHeight="1:2">
+  <mat-grid-tile *ngFor="let review of (reviews$ | async)">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{review.headline}}</mat-card-title>
+        <mat-card-subtitle>{{review.opening_date}}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image
+           [src]="review.multimedia.src"
+           [alt]="review.byline">
+      <mat-card-content>
+        <p>
+          {{review.summary_short}}
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <a mat-button target="_blank" href="{{review.link.url}}">Link</a>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>

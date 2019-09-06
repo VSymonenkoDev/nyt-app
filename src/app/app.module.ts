@@ -1,25 +1,22 @@
 import {BrowserModule} from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
 import {HttpClientModule} from '@angular/common/http';
-import {RouterModule, Routes} from '@angular/router';
-
-const routing: Routes = [
-  {path: '', redirectTo: 'home', pathMatch: 'full'},
-  {path: 'home', loadChildren: './home/home.module#HomeModule'},
-  {path: 'top-stories', loadChildren: './top-stories/top-stories.module#TopStoriesModule'},
-  {path: '**', redirectTo: 'home'}
-];
+import {AppRoutingModule} from './app-routing.module';
+import {NavComponent} from './nav/nav.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
-    RouterModule.forRoot(routing, {enableTracing: false})
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,3 +1,27 @@
-<div *ngFor="let story of (reviews$ | async)">
-  {{story.display_title}}
+<h1>Top stories</h1>
+<div class="sorting">
+  <h2>Sort by:</h2>
 </div>
+
+<mat-grid-list cols="4" rowHeight="1:2">
+  <mat-grid-tile *ngFor="let story of (topStories$ | async)">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{story.title}}</mat-card-title>
+        <mat-card-subtitle>{{story.section}}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image
+           [src]="story.multimedia[0]?.url"
+           [alt]="story.multimedia[0]?.caption">
+      <mat-card-content>
+        <p>
+          {{story.abstract}}
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <a mat-button target="_blank" href="{{story.url}}">Link</a>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>

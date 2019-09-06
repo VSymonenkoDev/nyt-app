@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {TopStoriesService} from '../services/top-stories.service';
+import {filter, map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-top-stories',
@@ -8,15 +9,14 @@ import {TopStoriesService} from '../services/top-stories.service';
 })
 export class TopStoriesComponent implements OnInit {
   topStories$: any;
-  mostShared$: any;
-  reviews$: any;
 
   constructor(public topStories: TopStoriesService) {}
 
   ngOnInit() {
-    console.log(1);
-    this.topStories$ = this.topStories.getTopStories();
-    this.mostShared$ = this.topStories.getMostShared();
-    this.reviews$ = this.topStories.getReview();
+    this.topStories$ = this.topStories.getTopStories()
+      .pipe(
+        map(storys => storys.filter(story => story.multimedia.length))
+      );
+    // this.topStories$.subscribe(console.log);
   }
 }

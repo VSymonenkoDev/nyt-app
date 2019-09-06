@@ -1,3 +1,24 @@
-<p>
-  home works!
-</p>
+<h1>Home</h1>
+<h2>All articles</h2>
+<mat-grid-list cols="4" rowHeight="1:2">
+  <mat-grid-tile *ngFor="let story of (allStories$ | async)">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{story.title || story.headline}}</mat-card-title>
+        <mat-card-subtitle>{{story.section || story.opening_date}}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image
+           [src]="story.multimedia[0]?.url || story.multimedia.src"
+           [alt]="story.multimedia[0]?.caption || story.byline">
+      <mat-card-content>
+        <p>
+          {{story.abstract || story.summary_short}}
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <a mat-button target="_blank" href="{{story.url || story.link.url}}">Link</a>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>

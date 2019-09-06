@@ -1,15 +1,15 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {HomeComponent} from './home.component';
+import {ReviewsComponent} from './reviews.component';
 import {RouterModule, Routes} from '@angular/router';
 import {MatButtonModule, MatCardModule, MatGridListModule} from '@angular/material';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent}
+  {path: '', component: ReviewsComponent}
 ];
 
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [ReviewsComponent],
   imports: [
     CommonModule,
     MatGridListModule,
@@ -18,4 +18,4 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ]
 })
-export class HomeModule { }
+export class ReviewsModule { }
