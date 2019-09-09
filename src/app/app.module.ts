@@ -19,6 +19,7 @@ import {NavComponent} from './nav/nav.component';
     AppRoutingModule
   ],
   providers: [],
+  exports: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

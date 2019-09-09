@@ -1,0 +1,30 @@
+<h2>Simple Registration Form</h2>
+{{simpleForm.value | json}}
+<form #simpleForm="ngForm" (ngSubmit)="saveUserData(simpleForm)">
+  <div>
+    <label for="name">Name</label>
+    <input type="text" #name="ngModel" name="name" id="name" [(ngModel)]="userModel.name" required minlength="2">
+    <span [hidden]="!name.errors">error</span>
+    {{name.errors | json}}
+  </div>
+  <div>
+    <label for="surname">Surname</label>
+    <input type="text" name="surname" id="surname" [(ngModel)]="userModel.surname">
+  </div>
+  <div>
+    <label>Gender</label>
+    <input type="radio" name="gender" value="man" [(ngModel)]="userModel.gender">
+    <input type="radio" name="gender" value="woman" [(ngModel)]="userModel.gender">
+  </div>
+  <div ngModelGroup="pass">
+    <div>
+      <label for="pass"></label>
+      <input type="password" name="password" id="pass" [(ngModel)]="userModel.password">
+    </div>
+    <div>
+      <label for="comparepass"></label>
+      <input type="password" name="comparepass" id="comparepass" [(ngModel)]="userModel.comparePass">
+    </div>
+  </div>
+  <button type="submit">Send</button>
+</form>
